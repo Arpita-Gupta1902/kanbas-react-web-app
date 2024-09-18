@@ -40,7 +40,16 @@ export default function Lab1() {
                 <li>Serve and enjoy!</li>
             </ol>
             My favorite recipe:
-            <ol id="wd-my-favorite-recipe">{/* complete on your own */}</ol>
+            <ol id="wd-my-favorite-recipe">
+                <li>Mix dry ingredients.</li>
+                <li>Add wet ingredients.</li>
+                <li>Stir to combine.</li>
+                <li>Heat a skillet or griddle.</li>
+                <li>Pour batter onto the skillet.</li>
+                <li>Cook until bubbly on top.</li>
+                <li>Flip and cook the other side.</li>
+                <li>Serve and enjoy!</li>
+            </ol>
             <h5>Unordered List Tag</h5>
             My favorite books (in no particular order)
             <ul id="wd-my-books">
@@ -52,7 +61,11 @@ export default function Lab1() {
             </ul>
             Your favorite books (in no particular order)
             <ul id="wd-your-books">
-            {/* complete on your own */}
+            <li>Dune</li>
+            <li>Lord of the Rings</li>
+            <li>Ender's Game</li>
+            <li>Red Mars</li>
+            <li>The Forever War</li>
             </ul>
         </div>
         <div id="wd-tables">
@@ -94,7 +107,8 @@ export default function Lab1() {
           </tfoot>
         </table>
       </div>
-      <img src="my-picture.jpg" width="200px" height="300px"/>
+      <br></br>
+      <img src="../../images/my-picture.jpeg" width="200px" height="150px" alt=""/>
       <div id="wd-images">
         <h4>Image tag</h4>
         Loading an image from the internet:
@@ -106,7 +120,7 @@ export default function Lab1() {
         <br />
         Loading a local image:
         <br />
-        <img id="wd-teslabot" src="images/teslabot.jpg" height="200px" />
+        <img id="wd-teslabot" src="../../images/teslabot.jpeg" height="200px" alt="" />
         </div>
         <input type="text"
        placeholder="hint"
@@ -127,7 +141,6 @@ export default function Lab1() {
             <label htmlFor="wd-text-fields-last-name">Last name:</label>
             <input type="text" id="wd-text-fields-last-name" placeholder="Doe"
             value="Wonderland" title="The last name" />
-            {/* copy rest of form elements here  */}
         </form>
         </div>
         <textarea cols={20} rows={25}

@@ -74,11 +74,11 @@ export default function AssignmentEditor() {
           </tr>
           <input id="wd-assign-to" value="Everyone" />
           <tr>
-            <td align="right" valign="top">
+            <td valign="top" style={{width:20}}>
               <label htmlFor="wd-assign-to">Due</label>
+              <input id="wd-due-date" type="date" value="2024-05-13" />
             </td>
           </tr>
-          <input id="wd-due-date" type="date" value="2024-05-13" />
           <tr>
             <td valign="top" style={{width:20}}>
               <label htmlFor="wd-assign-to">Available from</label>
