@@ -3,7 +3,11 @@ export default function Modules() {
       <div>
         <div style={{ display: 'flex', paddingRight: '20px' }}>
           <button style={{ marginRight: '10px' }}>Collapse All</button>
-          <button>View Progress</button>
+          <button style={{ marginRight: '10px' }}>View Progress</button>
+          <select style={{ marginRight: '10px' }}>
+                <option>Publish All</option>
+          </select>
+          <button style={{ marginRight: '10px' }}>+ Module</button>
         </div>
         <ul id="wd-modules">
           <li className="wd-module">
