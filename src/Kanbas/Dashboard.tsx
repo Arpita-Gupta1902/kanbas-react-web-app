@@ -20,6 +20,103 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS2234 Docker Kubernetes
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Devops Engineering
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS1244 Database
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Database Management Systems
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS1235 Cloud Operations
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Cloud Computing
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS1237 .NET ASP CORE
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Introduction to C# and .NET framework
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS3344 Networking
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Networking Fundamentals
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
+        <div className="wd-dashboard-course">
+          <Link className="wd-dashboard-course-link"
+                to="/Kanbas/Courses/1234/Home">
+            <img src="/logo192.png" width={200} />
+            <div>
+              <h5>
+                 CS1284 Git
+              </h5>
+              <p className="wd-dashboard-course-title">
+                Versioning Control Systems
+              </p>
+              <button> Go </button>
+            </div>
+          </Link>
+        </div>
+
         <div className="wd-dashboard-course"> ... </div>
         <div className="wd-dashboard-course"> ... </div>
       </div>

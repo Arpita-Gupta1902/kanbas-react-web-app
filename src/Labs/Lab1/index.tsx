@@ -70,42 +70,84 @@ export default function Lab1() {
         </div>
         <div id="wd-tables">
         <h4>Table Tag</h4>
-        <table border={1} width="100%">
-          <thead>
-            <tr>
-              <th>Quiz</th>
-              <th>Topic</th>
-              <th>Date</th>
-              <th>Grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Q1</td>
-              <td>HTML</td>
-              <td>2/3/21</td>
-              <td>85</td>
-            </tr>
-            <tr>
-              <td>Q2</td>
-              <td>CSS</td>
-              <td>2/10/21</td>
-              <td>90</td>
-            </tr>
-            <tr>
-              <td>Q3</td>
-              <td>JavaScript</td>
-              <td>2/17/21</td>
-              <td>95</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={3}>Average</td>
-              <td>90</td>
-            </tr>
-          </tfoot>
-        </table>
+        <table style={{ width: "100%", border: "1px solid black", borderCollapse: "collapse" }}>
+        <thead>
+          <tr>
+            <th style={{ border: "1px solid black", padding: "8px", textAlign: "center"}}>Quiz</th>
+            <th style={{ border: "1px solid black", padding: "8px", textAlign: "center"}}>Topic</th>
+            <th style={{ border: "1px solid black", padding: "8px", textAlign: "center"}}>Date</th>
+            <th style={{ border: "1px solid black", padding: "8px", textAlign: "center"}}>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q1</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>HTML</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>2/3/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>85</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q2</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>CSS</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>2/10/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>90</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q3</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>JavaScript</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>2/17/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>95</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q4</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>React</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>2/24/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>91</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q5</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Bootstrap</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/1/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>99</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q6</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Java</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/8/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>95</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q7</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Docker</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/15/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>92</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q8</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Kubernetes</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/22/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>90</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q9</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Node.js</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/29/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>97</td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Q10</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>Python</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>3/31/21</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>95</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style={{ border: "1px solid black", padding: "8px" }} colSpan={3}>Average</td>
+            <td style={{ border: "1px solid black", padding: "8px" }}>92</td>
+          </tr>
+        </tfoot>
+      </table>
       </div>
       <br></br>
       <img src="../../images/my-picture.jpeg" width="200px" height="150px" alt=""/>
