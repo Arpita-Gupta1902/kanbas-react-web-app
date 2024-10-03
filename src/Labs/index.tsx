@@ -11,20 +11,21 @@ export default function Labs() {
       <h3>Section: 02</h3>
       <table>
       <tr>
-        <td><h3>Lab Assignment Links:</h3></td>
+        <td><h3>Lab Assignment 1 Link:</h3></td>
         <td><a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423279">Assignment 1</a></td>
       </tr>
       <tr>
+        <td><h3>Lab Assignment 2 Link:</h3></td>
+        <td><a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423280">Assignment 2</a></td>
+      </tr>
+      <tr>
         <td><h3>Link to the Kanbas application:</h3></td>
-        <td><a id="wd-kanbas-link" href="https://main--gregarious-entremet-079863.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a></td>
+        <td><a id="wd-kanbas-link" href="https://66fedfe7764d00ffbdd605f6--tiny-parfait-8c76c2.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a></td>
       </tr>
       <tr>
         <td><h3>Links to all relevant source code repositories:</h3></td>
         <td><a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app">Github Repository</a></td>
-      </tr>
-      <tr>
-        <td><h3>Editor page link:</h3></td>
-        <td><a id="wd-editor-link" href="https://main--gregarious-entremet-079863.netlify.app/#/Kanbas/Courses/1234/Assignments/Editor">Editor Page Link</a></td>
+        <td><a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app/tree/a2">Github Repository</a></td>
       </tr>
     </table>
       <TOC />
