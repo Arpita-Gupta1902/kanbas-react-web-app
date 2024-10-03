@@ -1,0 +1,104 @@
+body   {  margin: 0;  padding: 0;  }
+body * {  font-family: Arial, Helvetica, sans-serif;  }
+
+@media (min-width: 768px) {
+  #wd-kanbas .wd-main-content-offset {
+    padding-left: 140px !important;
+  }
+}
+
+.list-group.wd > .list-group-item.active {
+    color: black;
+    background-color: white;
+    border-left: 3px solid black !important;
+  }
+  
+
+  .btn-secondary {
+    --bs-btn-color: #000 !important;
+    --bs-btn-bg: #c7cdd1 !important;
+    --bs-btn-border-color: #c7cdd1 !important;
+    --bs-btn-hover-color: #fff !important;
+  }
+  .bg-secondary {
+    --bs-secondary-rgb: 199, 205, 209;
+  }
+  .list-group-item {
+    --bs-list-group-border-color: gray;
+  }
+  .wd-lesson {
+    border-left: 3px solid green !important;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding-left: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+  
+  .custom-datetime-input::-webkit-calendar-picker-indicator {
+    filter: invert(60%);
+    opacity: 0.5;
+}
+
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+}
+
+.date-display {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.calendar-icon {
+  background-color: #e0e0e0;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.calendar-icon svg {
+  font-size: 1.2rem;
+  color: #495057;
+}
+
+.date-time-picker {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
