@@ -21,6 +21,8 @@ export default function Signin() {
       <a id="wd-kanbas-link" href="https://main--gregarious-entremet-079863.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
       <h3>Links to all relevant source code repositories</h3>
       <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app">Github Repository</a>
+      <br/>
+      <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app/tree/a2">Github Repository a2 branch</a>
       </div>
       </div>
     </div>
