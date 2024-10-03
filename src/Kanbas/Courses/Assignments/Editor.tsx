@@ -4,15 +4,13 @@ import { FaCalendarAlt } from "react-icons/fa";
 export default function AssignmentEditor() {
   return (
     <div id="wd-assignments-editor" className="container" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
-      <div className="row mb-3">
-        <div className="col">
+      <div className="col mb-3">
+        <div className="col mb-3">
           <label htmlFor="wd-name" className="form-label">Assignment Name</label>
           <input id="wd-name" className="form-control" value="A1" />
         </div>
-      </div>
-
-      <div className="row mb-3">
-        <div className="col">
+      
+        <div className="col d-flex mb-3">
           <div
             id="wd-description"
             className="form-control"
@@ -37,11 +35,10 @@ export default function AssignmentEditor() {
             The Kanbas application should include a link to navigate back to the landing page
           </div>
         </div>
-      </div>
+      
 
-      <div className="row d-flex">
-        <div className="col-lg" style={{ marginLeft: '200px' }}>
-        <div className="mb-3 d-flex align-items-center">
+      <div className="row d-flex mb-3">
+        <div className="mb-3 col d-flex align-items-center">
           <label htmlFor="wd-points" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Points</label>
           <input id="wd-points" type="number" className="form-control" value={100} />
         </div>
@@ -57,8 +54,9 @@ export default function AssignmentEditor() {
               <option>Percentage</option>
             </select>
           </div>
+        </div>
 
-          <div className="mb-3 d-flex">
+          <div className="col mb-3 d-flex">
           <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0"  style={{textAlign:"right"}}>Submission Type</label>
           <div className="card col mb-3">
             <div className="card-body">
@@ -97,7 +95,7 @@ export default function AssignmentEditor() {
           </div>
           </div>
 
-          <div className="mb-3 d-flex">
+        <div className="col mb-3 d-flex">
           <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Assign</label>
           <div className="card col">
             <div className="card-body">
@@ -137,8 +135,6 @@ export default function AssignmentEditor() {
             </div>
             </div>
             </div>
-          </div>
-        </div>
       </div>
 
       <hr />
@@ -148,6 +144,7 @@ export default function AssignmentEditor() {
           <button className="btn btn-danger">Save</button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
