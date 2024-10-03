@@ -20,7 +20,7 @@ export default function Labs() {
       </tr>
       <tr>
         <td><h3>Link to the Kanbas application:</h3></td>
-        <td><a id="wd-kanbas-link" href="https://66fedfe7764d00ffbdd605f6--tiny-parfait-8c76c2.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a></td>
+        <td><a id="wd-kanbas-link" href="https://tiny-parfait-8c76c2.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a></td>
       </tr>
       <tr>
         <td><h3>Links to all relevant source code repositories:</h3></td>

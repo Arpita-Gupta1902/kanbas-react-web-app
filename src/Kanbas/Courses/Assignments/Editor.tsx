@@ -42,24 +42,24 @@ export default function AssignmentEditor() {
       <div className="row d-flex">
         <div className="col-lg" style={{ marginLeft: '200px' }}>
         <div className="mb-3 d-flex align-items-center">
-          <label htmlFor="wd-points" className="col-2 form-label me-2 mb-0" style={{paddingLeft: "85px"}}>Points</label>
+          <label htmlFor="wd-points" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Points</label>
           <input id="wd-points" type="number" className="form-control" value={100} />
         </div>
           <div className="mb-3 d-flex align-items-center">
-            <label htmlFor="wd-select-one-option" className="col-2 form-label me-2 mb-0">Assignment Group</label>
+            <label htmlFor="wd-select-one-option" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Assignment Group</label>
             <select id="wd-select-one-option" className="form-select">
               <option value="ASSIGNMENT">ASSIGNMENTS</option>
             </select>
           </div>
           <div className="mb-3 d-flex align-items-center">
-            <label htmlFor="wd-display-grade-as" className="col-2 form-label me-2 mb-0" style={{paddingLeft: "8px"}}>Display Grade as</label>
+            <label htmlFor="wd-display-grade-as" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Display Grade as</label>
             <select id="wd-display-grade-as" className="form-select">
               <option>Percentage</option>
             </select>
           </div>
 
           <div className="mb-3 d-flex">
-          <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0"  style={{paddingLeft: "8px"}}>Submission Type</label>
+          <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0"  style={{textAlign:"right"}}>Submission Type</label>
           <div className="card col mb-3">
             <div className="card-body">
               <div className="mb-3 ">
@@ -98,7 +98,7 @@ export default function AssignmentEditor() {
           </div>
 
           <div className="mb-3 d-flex">
-          <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0" style={{paddingLeft: "77px"}}>Assign</label>
+          <label htmlFor="wd-submission-type" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Assign</label>
           <div className="card col">
             <div className="card-body">
             <div className="form-group border p-3">
