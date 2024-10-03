@@ -7,7 +7,7 @@ export default function Signin() {
       <input placeholder="username"  className="form-control mb-2"/>
       <input placeholder="password" type="password"  className="form-control mb-2"/>
       <Link to="/Kanbas/Account/Profile" className="btn btn-primary w-100" > Signin </Link>
-      <Link to="/Kanbas/Account/Signin" >Signup</Link>
+      <Link to="/Kanbas/Account/Signup" >Signup</Link>
     </div>
     <div className="card mb-3" style={{marginTop:"70px"}}>
     <div className="card-body">
