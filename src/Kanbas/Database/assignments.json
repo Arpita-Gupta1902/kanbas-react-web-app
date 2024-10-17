@@ -1,0 +1,192 @@
+[
+    {
+      "_id": "A101",
+      "title": "Propulsion Assignment",
+      "course": "RS101",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-05-13T23:59",
+      "points": "100",
+      "available_date": "2024-05-06T12:00"
+    },
+    {
+      "_id": "A102",
+      "title": "Combustion Analysis",
+      "course": "RS101",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-05-20T23:59",
+      "points": "100",
+      "available_date": "2024-05-13T12:00"
+    },
+    {
+      "_id": "A103",
+      "title": "Nozzle Design Project",
+      "course": "RS101",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-05-27T23:59",
+      "points": "100",
+      "available_date": "2024-05-20T12:00"
+    },
+    {
+      "_id": "A201",
+      "title": "Aerodynamics Quiz",
+      "course": "RS102",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-06-03T23:59",
+      "points": "100",
+      "available_date": "2024-05-27T12:00"
+    },
+    {
+      "_id": "A202",
+      "title": "Flow Analysis",
+      "course": "RS102",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-06-10T23:59",
+      "points": "100",
+      "available_date": "2024-06-03T12:00"
+    },
+    {
+      "_id": "A203",
+      "title": "Heating Analysis",
+      "course": "RS102",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-06-17T23:59",
+      "points": "100",
+      "available_date": "2024-06-10T12:00"
+    },
+    {
+      "_id": "A301",
+      "title": "Structural Design Task",
+      "course": "RS103",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-06-24T23:59",
+      "points": "100",
+      "available_date": "2024-06-17T12:00"
+    },
+    {
+      "_id": "A302",
+      "title": "Orbital Calculations",
+      "course": "RS103",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-07-01T23:59",
+      "points": "100",
+      "available_date": "2024-06-24T12:00"
+    },
+    {
+      "_id": "A303",
+      "title": "Systems Engineering Exam",
+      "course": "RS103",
+      "description": {
+        "text1": "The assignment is",
+        "text2": "available online",
+        "text3": "Submit a link to the landing page of your Web application running on Netlify.",
+        "text4": "The landing page should include the following:",
+        "points": [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+        "text5": "The Kanbas application should include a link to navigate back to the landing page"
+      },
+      "due_date": "2024-07-08T23:59",
+      "points": "100",
+      "available_date": "2024-07-01T12:00"
+    }
+  ]
+  

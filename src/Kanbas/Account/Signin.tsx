@@ -17,6 +17,8 @@ export default function Signin() {
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423279">Assignment 1</a>
       <h3>Assignment 2 Link:</h3>
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423280">Assignment 2</a>
+      <h3>Assignment 3 Link:</h3>
+      <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423281">Assignment 2</a>
       <h3>Link to the Kanbas application</h3>
       <a id="wd-kanbas-link" href="https://tiny-parfait-8c76c2.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
       <h3>Links to all relevant source code repositories</h3>

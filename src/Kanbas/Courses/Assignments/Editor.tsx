@@ -1,13 +1,32 @@
 import { useState, useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
+import { useParams } from "react-router";
+import { Assignments as assignments} from "../../Database";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = assignments.find((item) => item._id === aid);
+  const data = {
+    description: {
+      text1: "The assignment is",
+      text2: "available online",
+      text3: "Submit a link to the landing page of your Web application running on Netlify.",
+      text4: "The landing page should include the following:",
+      points: [
+          "Your full name and section",
+          "Links to each of the lab assignments",
+          "A link to the Kanbas application",
+          "Links to all relevant source code repositories"
+        ],
+      text5: "The Kanbas application should include a link to navigate back to the landing page"
+    }
+  };
   return (
     <div id="wd-assignments-editor" className="container" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
       <div className="col mb-3">
         <div className="col mb-3">
           <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-          <input id="wd-name" className="form-control" value="A1" />
+          <input id="wd-name" className="form-control" value={assignment ? assignment.title : ""} />
         </div>
       
         <div className="col d-flex mb-3">
@@ -15,24 +34,22 @@ export default function AssignmentEditor() {
             id="wd-description"
             className="form-control"
             contentEditable="true"
-            style={{ whiteSpace: "pre-wrap", minHeight: "100px" }}
-          >
-            The assignment is <span className = "text-danger">available online</span>.
+            style={{ whiteSpace: "pre-wrap", minHeight: "100px" }}>
+            {data.description.text1} <span className = "text-danger">{data.description.text2}</span>
             <br/>
             <br/>
-            Submit a link to the landing page of your Web application running on Netlify. 
+            {data.description.text3} 
             <br/>
             <br/>
-            The landing page should include the following:
+            {data.description.text4}
             <br/>
             <br/>
             <ul>
-              <li>Your full name and section</li>
-              <li>Links to each of the lab assignments</li>
-              <li>A link to the Kanbas application</li>
-              <li>Links to all relevant source code repositories</li>
+              {data.description.points.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
             </ul>
-            The Kanbas application should include a link to navigate back to the landing page
+            {data.description.text5}
           </div>
         </div>
       
@@ -40,7 +57,7 @@ export default function AssignmentEditor() {
       <div className="row d-flex mb-3">
         <div className="mb-3 col d-flex align-items-center">
           <label htmlFor="wd-points" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Points</label>
-          <input id="wd-points" type="number" className="form-control" value={100} />
+          <input id="wd-points" type="number" className="form-control" value={assignment ? assignment.points : ""} />
         </div>
           <div className="mb-3 d-flex align-items-center">
             <label htmlFor="wd-select-one-option" className="col-2 form-label me-2 mb-0" style={{textAlign:"right"}}>Assignment Group</label>
@@ -116,14 +133,14 @@ export default function AssignmentEditor() {
               <div className="row mt-3">
                 <div className="col-md-12">
                   <label htmlFor="due-date"><strong>Due</strong></label>
-                  <CustomDateTimeInput defaultDate="2024-05-13T23:59" />
+                  <CustomDateTimeInput defaultDate={assignment ? assignment.due_date : ""} />
                 </div>
               </div>
               
               <div className="row mt-3">
                 <div className="col-md-6">
                   <label htmlFor="available-from"><strong>Available from</strong></label>
-                  <CustomDateTimeInput defaultDate="2024-05-06T12:00" />
+                  <CustomDateTimeInput defaultDate={assignment ? assignment.available_date : ""} />
                 </div>
                 
                 <div className="col-md-6">
@@ -140,8 +157,8 @@ export default function AssignmentEditor() {
       <hr />
       <div className="row">
         <div className="col text-end">
-          <button className="btn bg-light btn-secondary me-1">Cancel</button>
-          <button className="btn btn-danger">Save</button>
+          <a className="wd-assignment-link text-decoration-none text-dark" href={`#/Kanbas/Courses/${cid}/Assignments`}><button className="btn bg-light btn-secondary text-dark me-1">Cancel</button></a>
+          <a className="wd-assignment-link text-decoration-none text-dark" href={`#/Kanbas/Courses/${cid}/Assignments`}><button className="btn btn-danger">Save</button></a>
         </div>
       </div>
     </div>

@@ -6,8 +6,11 @@ import { GoTriangleDown } from "react-icons/go";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
+import { Assignments as assignments} from "../../Database";
+import { useParams } from "react-router";
 
 export default function Assignments() {
+  const { cid } = useParams();
     return (
       <div id="wd-assignments">
         <AssignmentControls/><br/><br/>
@@ -20,72 +23,59 @@ export default function Assignments() {
                   <AssignmentControlButtons/>
             </div>
             <ul className="wd-lessons list-group rounded-0">
-              <li className="wd-lesson d-flex border-bottom border-gray">
-                <div className="d-flex align-items-center">
-                  <BsGripVertical className="ms-2 fs-4" />
-                  <FaRegEdit className="ms-3 text-success fs-4"/>
-                </div>
-                <div className="fs-6 assignment-padding">
-                  <a className="wd-assignment-link text-decoration-none text-dark ms-3"
-                    href="#/Kanbas/Courses/1234/Assignments/123">
-                  <strong>A1</strong><br/>
-                  </a>
-                  <div className="ms-3 text-muted">
-                  <span className="text-danger">Multiple Modules </span>| <span className="text-dark">Not available until</span> May 6 at 12:00am |<br/><span className="text-dark">Due</span> May 13 at 11:59pm | 100pts
+              {assignments.map((item) => {
+                if (item.course === cid) { 
+                return( 
+                <li className="wd-lesson d-flex border-bottom border-gray">
+                  <div className="d-flex align-items-center">
+                    <BsGripVertical className="ms-2 fs-4" />
+                    <FaRegEdit className="ms-3 text-success fs-4"/>
                   </div>
-                </div>
-                <div className="ms-auto d-flex align-items-center">
-                <span className="me-4"> 
-                  <GreenCheckmark />
-                </span>
-                  <IoEllipsisVertical className="me-4"/>
-                </div>
-              </li>
-              <li className="wd-lesson d-flex border-bottom border-gray">
-                <div className="d-flex align-items-center">
-                  <BsGripVertical className="ms-2 fs-4" />
-                  <FaRegEdit className="ms-3 text-success fs-4"/>
-                </div>
-                <div className="fs-6 assignment-padding">
-                  <a className="wd-assignment-link text-decoration-none text-dark ms-3"
-                    href="#/Kanbas/Courses/1234/Assignments/123">
-                  <strong>A2</strong><br/>
-                  </a>
-                  <div className="ms-3 text-muted">
-                  <span className="text-danger">Multiple Modules </span>| <span className="text-dark">Not available until</span> May 13 at 12:00am |<br/><span className="text-dark">Due</span> May 20 at 11:59pm | 100pts
+                  <div className="fs-6 assignment-padding">
+                    <a className="wd-assignment-link text-decoration-none text-dark ms-3"
+                      href={`#/Kanbas/Courses/${cid}/Assignments/${item._id}`}>
+                    <strong>{item.title}</strong><br/>
+                    </a>
+                    <div className="ms-3 text-muted">
+                    <span className="text-danger">Multiple Modules </span>| <span className="text-dark">Not available until</span> {item ? formatDate(item.available_date) : ""} |<br/><span className="text-dark">Due</span> {item ? formatDate(item.due_date) : ""} | {item ? item.points : ""} <span>pts</span>
+                    </div>
                   </div>
-                </div>
-                <div className="ms-auto d-flex align-items-center">
-                <span className="me-4"> 
-                  <GreenCheckmark />
-                </span>
-                  <IoEllipsisVertical className="me-4"/>
-                </div>
-              </li>  
-              <li className="wd-lesson d-flex border-bottom border-gray">
-                <div className="d-flex align-items-center">
-                  <BsGripVertical className="ms-2 fs-4" />
-                  <FaRegEdit className="ms-3 text-success fs-4"/>
-                </div>
-                <div className="fs-6 assignment-padding">
-                  <a className="wd-assignment-link text-decoration-none text-dark ms-3"
-                    href="#/Kanbas/Courses/1234/Assignments/123">
-                  <strong>A3</strong><br/>
-                  </a>
-                  <div className="ms-3 text-muted">
-                  <span className="text-danger">Multiple Modules </span>| <span className="text-dark">Not available until</span> May 20 at 12:00am |<br/><span className="text-dark">Due</span> May 27 at 11:59pm | 100pts
+                  <div className="ms-auto d-flex align-items-center">
+                  <span className="me-4"> 
+                    <GreenCheckmark />
+                  </span>
+                    <IoEllipsisVertical className="me-4"/>
                   </div>
-                </div>
-                <div className="ms-auto d-flex align-items-center">
-                <span className="me-4"> 
-                  <GreenCheckmark />
-                </span>
-                  <IoEllipsisVertical className="me-4"/>
-                </div>
-              </li>
+                </li>
+              )
+              }
+              }
+              )
+              }
             </ul>
           </li>
         </ul>
       </div>
   );}
+  
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+
+    const options: Intl.DateTimeFormatOptions = { 
+      month: 'long', 
+      day: 'numeric' 
+    };
+  
+    const formattedDate = date.toLocaleString('en-US', options);
+  
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+  
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+  
+    return `${formattedDate} at ${hours}:${minutes} ${ampm}`;
+  };
   
