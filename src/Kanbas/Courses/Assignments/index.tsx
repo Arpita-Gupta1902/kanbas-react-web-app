@@ -12,11 +12,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAssignments } from "./reducer";
 import { FaTrashCan } from "react-icons/fa6";
 import { Button, Modal } from "react-bootstrap";
+import useIsFaculty from "../../Account/useIsFaculty";
 
 export default function Assignments() {
   const { cid } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userIsFaculty = useIsFaculty();
   const assignmentsReduxData = useSelector(
     (state: any) => state.assignmentReducer
   );
@@ -77,7 +79,7 @@ export default function Assignments() {
                         <span className="text-dark">Not available until</span>{" "}
                         {item ? formatDate(item.available_date) : ""} |<br />
                         <span className="text-dark">Due</span>{" "}
-                        {item ? formatDate(item.due_date) : ""} |{" "}
+                        {item ? formatDate(item.due_date) : ""} | {" "}
                         {item ? item.points : ""} <span>pts</span>
                       </div>
                     </div>
@@ -85,13 +87,13 @@ export default function Assignments() {
                       <span className="me-4">
                         <GreenCheckmark />
                       </span>
-                      <span className="me-4">
+                      {userIsFaculty && ( <span className="me-4">
                         <FaTrashCan
                           onClick={() => {
                             handleDelete(item._id);
                           }}
                         />
-                      </span>
+                      </span> )}
 
                       <IoEllipsisVertical className="me-4" />
                     </div>

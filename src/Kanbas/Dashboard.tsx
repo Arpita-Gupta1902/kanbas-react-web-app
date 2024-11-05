@@ -1,29 +1,38 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useIsFaculty from "./Account/useIsFaculty";
-import { enroll, unenroll } from "./dashboardReducer";
-
-export default function Dashboard({
-  // courses,
-  course,
-  setCourse,
-  addNewCourse,
+import {
+  enroll,
+  unenroll,
   deleteCourse,
   updateCourse,
-}: {
-  // courses: any[];
-  course: any;
-  setCourse: (course: any) => void;
-  addNewCourse: () => void;
-  deleteCourse: (course: any) => void;
-  updateCourse: () => void;
-}) {
+  addCourse,
+} from "./dashboardReducer";
+
+export default function Dashboard() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const userId = currentUser._id;
   const UserIsFaculty = useIsFaculty();
   const [enrollmentToggle, setEnrollmentToggle] = useState<boolean>(true);
+  const [selectedCourse, setSelectedCourse] = useState({
+    name: "New course",
+    description: "New description",
+  });
+  const handleAddCourse = () => {
+    const course = {
+      _id: new Date().getTime().toString(),
+      name: selectedCourse.name,
+      number: "New Number",
+      startDate: "2023-09-10",
+      endDate: "2025-12-15",
+      description: selectedCourse.description,
+      manuallyAdded: true,
+    };
+    dispatch(enroll({ courseId: course._id, userId }));
+    dispatch(addCourse(course));
+  };
 
   const courses = useSelector((state: any) => state.courses.courses);
   const Enrollments = useSelector((state: any) => state.courses.enrollments);
@@ -48,7 +57,7 @@ export default function Dashboard({
             <button
               className="btn btn-primary float-end"
               id="wd-add-new-course-click"
-              onClick={addNewCourse}
+              onClick={handleAddCourse}
             >
               {" "}
               Add{" "}
@@ -57,7 +66,7 @@ export default function Dashboard({
           {UserIsFaculty && (
             <button
               className="btn btn-warning float-end me-2"
-              onClick={updateCourse}
+              onClick={() => dispatch(updateCourse(selectedCourse))}
               id="wd-update-course-click"
             >
               Update
@@ -68,17 +77,22 @@ export default function Dashboard({
       <br />
       {UserIsFaculty && (
         <input
-          value={course.name}
+          value={selectedCourse.name}
           className="form-control mb-2"
-          onChange={(e) => setCourse({ ...course, name: e.target.value })}
+          onChange={(e) =>
+            setSelectedCourse((prev) => ({ ...prev, name: e.target.value }))
+          }
         />
       )}
       {UserIsFaculty && (
         <textarea
-          value={course.description}
+          value={selectedCourse.description}
           className="form-control"
           onChange={(e) =>
-            setCourse({ ...course, description: e.target.value })
+            setSelectedCourse((prev) => ({
+              ...prev,
+              description: e.target.value,
+            }))
           }
         />
       )}
@@ -94,21 +108,23 @@ export default function Dashboard({
           <h2 id="wd-dashboard-published">
             Published Courses ({displayCourses.length})
           </h2>
-          <button
-            style={{
-              padding: "10px 15px",
-              backgroundColor: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setEnrollmentToggle(!enrollmentToggle);
-            }}
-          >
-            Enrollments
-          </button>
+          {!UserIsFaculty && (
+            <button
+              style={{
+                padding: "10px 15px",
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setEnrollmentToggle(!enrollmentToggle);
+              }}
+            >
+              Enrollments
+            </button>
+          )}
         </div>
         <hr />
       </div>
@@ -174,7 +190,7 @@ export default function Dashboard({
                           id="wd-edit-course-click"
                           onClick={(event) => {
                             event.preventDefault();
-                            setCourse(course);
+                            setSelectedCourse(course);
                           }}
                           className="btn btn-warning"
                         >
@@ -185,7 +201,7 @@ export default function Dashboard({
                         <button
                           onClick={(event) => {
                             event.preventDefault();
-                            deleteCourse(course._id);
+                            dispatch(deleteCourse(course._id));
                           }}
                           className="btn btn-danger float-end"
                           id="wd-delete-course-click"
@@ -195,24 +211,26 @@ export default function Dashboard({
                       )}
                     </div>
                   </Link>
-                  <button
-                    style={{
-                      padding: "10px 15px",
-                      backgroundColor: isEnrolled ? "red" : "green",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
-                      marginTop: 5,
-                    }}
-                    onClick={() => {
-                      isEnrolled
-                        ? dispatch(unenroll({ courseId: course._id, userId }))
-                        : dispatch(enroll({ courseId: course._id, userId }));
-                    }}
-                  >
-                    {isEnrolled ? "Unenroll" : "Enroll"}
-                  </button>
+                  {!UserIsFaculty && (
+                    <button
+                      style={{
+                        padding: "10px 15px",
+                        backgroundColor: isEnrolled ? "red" : "green",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                        marginTop: 5,
+                      }}
+                      onClick={() => {
+                        isEnrolled
+                          ? dispatch(unenroll({ courseId: course._id, userId }))
+                          : dispatch(enroll({ courseId: course._id, userId }));
+                      }}
+                    >
+                      {isEnrolled ? "Unenroll" : "Enroll"}
+                    </button>
+                  )}
                 </div>
               </div>
             );

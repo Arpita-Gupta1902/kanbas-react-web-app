@@ -18,26 +18,6 @@ export default function Kanbas() {
     description: "New Description",
     manuallyAdded: true,
   });
-  const addNewCourse = () => {
-    setCourses([
-      ...courses,
-      { ...course, _id: new Date().getTime().toString() },
-    ]);
-  };
-  const deleteCourse = (courseId: any) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
-  const updateCourse = () => {
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
-  };
   return (
     <div id="wd-kanbas">
       <KanbasNavigation />
@@ -50,12 +30,6 @@ export default function Kanbas() {
             element={
               <ProtectedRoute>
                 <Dashboard
-                  // courses={courses}
-                  course={course}
-                  setCourse={setCourse}
-                  addNewCourse={addNewCourse}
-                  deleteCourse={deleteCourse}
-                  updateCourse={updateCourse}
                 />
               </ProtectedRoute>
             }

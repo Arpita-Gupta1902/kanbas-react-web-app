@@ -32,8 +32,26 @@ const courseSlice = createSlice({
           !(enrollment.course === courseId && enrollment.user === userId)
       );
     },
+    deleteCourse: (state, action) => {
+      const courseId = action.payload;
+      state.courses = state.courses.filter((course) => course._id !== courseId);
+      state.enrollments = state.enrollments.filter(
+        (enrollment) => enrollment.course !== courseId
+      );
+    },
+    updateCourse: (state, action) => {
+      const updatedCourse = action.payload;
+      state.courses = state.courses.map((course) =>
+        course._id === updatedCourse._id ? updatedCourse : course
+      );
+    },
+    addCourse: (state, action) => {
+      const newCourse = { ...action.payload };
+      state.courses.push(newCourse);
+    },
   },
 });
 
-export const { enroll, unenroll } = courseSlice.actions;
+export const { enroll, unenroll, deleteCourse, updateCourse, addCourse } =
+  courseSlice.actions;
 export default courseSlice.reducer;

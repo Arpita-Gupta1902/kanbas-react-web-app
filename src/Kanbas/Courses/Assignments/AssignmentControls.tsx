@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { addAssignments } from "./reducer";
 import { useDispatch } from "react-redux";
 import React from "react";
+import useIsFaculty from "../../Account/useIsFaculty";
 
 interface AssignmentControlsProps {
   cid: string | undefined;
@@ -14,6 +15,7 @@ export const AssignmentControls = (props: AssignmentControlsProps) => {
   const { cid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const UserIsFaculty = useIsFaculty();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -51,7 +53,7 @@ export const AssignmentControls = (props: AssignmentControlsProps) => {
           />
           Group
         </button>
-        <button
+        {UserIsFaculty && (<button
           id="wd-add-module-btn"
           className="btn btn-lg btn-danger me-1"
           style={{ borderRadius: 0 }}
@@ -62,7 +64,7 @@ export const AssignmentControls = (props: AssignmentControlsProps) => {
             style={{ bottom: "1px" }}
           />
           Assignment
-        </button>
+        </button>)}
         <AssignmentModal
           cid={cid}
           show={show}

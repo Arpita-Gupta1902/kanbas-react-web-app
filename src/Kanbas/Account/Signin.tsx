@@ -38,14 +38,18 @@ export default function Signin() {
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423280">Assignment 2</a>
       <h3>Assignment 3 Link:</h3>
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423281">Assignment 3</a>
+      <h3>Assignment 4 Link:</h3>
+      <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423282">Assignment 4</a>
       <h3>Link to the Kanbas application</h3>
-      <a id="wd-kanbas-link" href="https://thunderous-beijinho-ba45e5.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
+      <a id="wd-kanbas-link" href="https://celebrated-scone-b94a59.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
       <h3>Links to all relevant source code repositories</h3>
       <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app">Github Repository</a>
       <br/>
       <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app/tree/a2">Github Repository a2 branch</a>
       <br/>
       <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app/tree/a3">Github Repository a3 branch</a>
+      <br/>
+      <a id="wd-github" href="https://github.com/Arpita-Gupta1902/kanbas-react-web-app/tree/a4">Github Repository a4 branch</a>
       </div>
       </div>
     </div>
