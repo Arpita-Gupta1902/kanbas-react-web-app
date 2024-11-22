@@ -6,6 +6,12 @@ import { addAssignments } from "./reducer";
 import { useDispatch } from "react-redux";
 import React from "react";
 import useIsFaculty from "../../Account/useIsFaculty";
+import {
+  createAssignmentForCourse,
+  findAssignmentsForCourse,
+  deleteAssignment,
+  updateAssignment,
+} from "./client";
 
 interface AssignmentControlsProps {
   cid: string | undefined;
@@ -21,8 +27,19 @@ export const AssignmentControls = (props: AssignmentControlsProps) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleUpdateData = (newValue: any) => {
-    dispatch(addAssignments(newValue));
+  // const handleUpdateData = (newValue: any) => {
+  //   dispatch(addAssignments(newValue));
+  // };
+
+  const handleUpdateData = async (newAssignment: any) => {
+    if (cid) {
+      try {
+        const createdAssignment = await createAssignmentForCourse(cid, newAssignment);
+        dispatch(addAssignments(createdAssignment));
+      } catch (error) {
+        console.error("Failed to create assignment:", error);
+      }
+    }
   };
 
   return (
@@ -139,8 +156,19 @@ const AssignmentModal: React.FC<AssignmentModalProps> = ({
   const [availableFrom, setAvailableFrom] = useState("");
   const [availableUntil, setAvailableUntil] = useState("");
 
-  const handleSave = () => {
-    onSave({
+  const handleSave = async () => {
+    // onSave({
+    //   course: cid,
+    //   _id: `A${Date.now()}`,
+    //   title: name,
+    //   points,
+    //   due_date: dueDate,
+    //   available_until: availableUntil,
+    //   available_date: availableFrom,
+    //   description: description,
+    // });
+    // onHide();
+    const newAssignment = {
       course: cid,
       _id: `A${Date.now()}`,
       title: name,
@@ -149,7 +177,13 @@ const AssignmentModal: React.FC<AssignmentModalProps> = ({
       available_until: availableUntil,
       available_date: availableFrom,
       description: description,
-    });
+    };
+
+    try {
+      await onSave(newAssignment);
+    } catch (error) {
+      console.error("Error saving assignment:", error);
+    }
     onHide();
   };
 

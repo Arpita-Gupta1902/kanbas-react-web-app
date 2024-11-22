@@ -13,6 +13,8 @@ import { deleteAssignments } from "./reducer";
 import { FaTrashCan } from "react-icons/fa6";
 import { Button, Modal } from "react-bootstrap";
 import useIsFaculty from "../../Account/useIsFaculty";
+//import * as courseClient from "../../Courses/client";
+import * as assignmentClient from "../Assignments/client";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -23,11 +25,37 @@ export default function Assignments() {
     (state: any) => state.assignmentReducer
   );
   const [assignments, setAssignments] = useState<any[]>(
-    assignmentsReduxData.assignments
+    []
+    //assignmentsReduxData.assignments
   );
+
+  const fetchAssignments = async () => {
+    try {
+      const assignments = await assignmentClient.findAssignmentsForCourse(cid);
+      setAssignments(assignments);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDeleteAssignment = async (aid: any) => {
+    if (cid) {
+      try {
+        await assignmentClient.deleteAssignment(aid);
+        //dispatch(addAssignments(createdAssignment));
+      } catch (error) {
+        console.error("Failed to create assignment:", error);
+      }
+    }
+  };
+
   useEffect(() => {
-    setAssignments(assignmentsReduxData.assignments);
-  }, [assignmentsReduxData]);
+    fetchAssignments();
+  });
+
+  // useEffect(() => {
+  //   setAssignments(assignmentsReduxData.assignments);
+  // }, [assignmentsReduxData]);
 
   const [assignmentName, setAssignmentName] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -38,7 +66,8 @@ export default function Assignments() {
     setShowConfirmation(true);
   };
   const handleConfirmDelete = () => {
-    dispatch(deleteAssignments(assignmentToDelete));
+    //dispatch(deleteAssignments(assignmentToDelete));
+    handleDeleteAssignment(assignmentToDelete);
     setShowConfirmation(false);
   };
   const handleCancelDelete = () => {
@@ -79,7 +108,7 @@ export default function Assignments() {
                         <span className="text-dark">Not available until</span>{" "}
                         {item ? formatDate(item.available_date) : ""} |<br />
                         <span className="text-dark">Due</span>{" "}
-                        {item ? formatDate(item.due_date) : ""} | {" "}
+                        {item ? formatDate(item.due_date) : ""} |{" "}
                         {item ? item.points : ""} <span>pts</span>
                       </div>
                     </div>
@@ -87,13 +116,15 @@ export default function Assignments() {
                       <span className="me-4">
                         <GreenCheckmark />
                       </span>
-                      {userIsFaculty && ( <span className="me-4">
-                        <FaTrashCan
-                          onClick={() => {
-                            handleDelete(item._id);
-                          }}
-                        />
-                      </span> )}
+                      {userIsFaculty && (
+                        <span className="me-4">
+                          <FaTrashCan
+                            onClick={() => {
+                              handleDelete(item._id);
+                            }}
+                          />
+                        </span>
+                      )}
 
                       <IoEllipsisVertical className="me-4" />
                     </div>

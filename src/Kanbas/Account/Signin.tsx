@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
 import * as db from "../Database";
+import * as client from "./client";
 
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const signin = () => {
-    const user = db.Users.find(
-      (u: any) => u.username === credentials.username && u.password === credentials.password);
+  const signin =  async () => {
+    const user = await client.signin(credentials);
     if (!user) return;
     dispatch(setCurrentUser(user));
     navigate("/Kanbas/Dashboard");
@@ -18,7 +18,7 @@ export default function Signin() {
   return (
     <div>
       <div id="wd-signin-screen" className="col-6">
-      <h3>Signin</h3>
+      <h3>Sign in</h3>
       <input defaultValue={credentials.username}
              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
              placeholder="username"  className="form-control mb-2" id="wd-username"/>
@@ -40,6 +40,8 @@ export default function Signin() {
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423281">Assignment 3</a>
       <h3>Assignment 4 Link:</h3>
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423282">Assignment 4</a>
+      <h3>Assignment 5 Link:</h3>
+      <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423283">Assignment 5</a>
       <h3>Link to the Kanbas application</h3>
       <a id="wd-kanbas-link" href="https://celebrated-scone-b94a59.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
       <h3>Links to all relevant source code repositories</h3>

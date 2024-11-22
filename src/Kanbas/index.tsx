@@ -3,12 +3,36 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
-import * as db from "./Database";
-import { useState } from "react";
+import * as courseClient from "./Courses/client"
+import * as userClient from "./Account/client";
+import { useEffect, useState } from "react";
 import "./styles.css";
+import Session from "./Account/Session";
 import ProtectedRoute from "./Account/ProtectedRoute";
+import { useSelector } from "react-redux";
 export default function Kanbas() {
-  const [courses, setCourses] = useState<any[]>(db.Courses);
+  const [courses, setCourses] = useState<any[]>([]);
+  const addNewCourse = async () => {
+    const newCourse = await userClient.createCourse(course);
+    setCourses([ ...courses, newCourse ]);
+  };
+  const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
+    setCourses(courses.filter((course) => course._id !== courseId));
+  };
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const fetchCourses = async () => {
+    try {
+      const courses = await userClient.findMyCourses();
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, [currentUser]);
+
   const [course, setCourse] = useState<any>({
     _id: "1234",
     name: "New Course",
@@ -19,6 +43,7 @@ export default function Kanbas() {
     manuallyAdded: true,
   });
   return (
+    <Session>
     <div id="wd-kanbas">
       <KanbasNavigation />
       <div className="wd-main-content-offset p-3">
@@ -47,5 +72,6 @@ export default function Kanbas() {
         </Routes>
       </div>
     </div>
+    </Session>
   );
 }

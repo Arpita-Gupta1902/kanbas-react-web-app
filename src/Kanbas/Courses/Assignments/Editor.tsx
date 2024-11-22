@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useParams } from "react-router";
 import { Assignments as assignments } from "../../Database";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignments } from "./reducer";
+import * as assignmentClient from "../Assignments/client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -22,28 +23,60 @@ export default function AssignmentEditor() {
       hour12: true,
     });
   };
-  const assignmentsRedux = useSelector((state: any) => state.assignmentReducer);
-  const currAssignment = assignmentsRedux.assignments.find(
-    (item: any) => item._id === aid
+  interface Assignment {
+    _id?: string;
+    title?: string;
+    course?: string;
+    description?: string;
+    due_date: string;
+    points?: string;
+    available_date: string;
+    available_until: string;
+  }
+  const [currentAssignment, setCurrentAssignments] = useState<Assignment>(
+    {} as Assignment
   );
+  const fetchAssignmentById = async () => {
+    const assignment = await assignmentClient.findAssignmentById(aid ?? "");
+    // console.log("arpita", assignment);
+    setCurrentAssignments(assignment);
+  };
+  useEffect(() => {
+    fetchAssignmentById();
+  }, []);
+  useEffect(() => {
+    setAssignmentTitle(currentAssignment.title);
+    setAssignmentDescription(currentAssignment.description);
+    setPoints(currentAssignment.points);
+    setDueDate(formatDate(new Date(currentAssignment.due_date)));
+    setAvailableFrom(formatDate(new Date(currentAssignment.available_date)));
+    setAvailableUntil(formatDate(new Date(currentAssignment.available_until)));
+  }, [currentAssignment]);
 
-  const [assignmentTitle, setAssignmentTitle] = useState(currAssignment.title);
-  const [assignmentDescription, setAssignmentDescription] = useState(
-    currAssignment.description
+  const assignmentsRedux = useSelector((state: any) => state.assignmentReducer);
+  // let currAssignment = assignmentsRedux.assignments.find(
+  //   (item: any) => item._id === aid
+  // );
+
+  const [assignmentTitle, setAssignmentTitle] = useState(
+    currentAssignment.title
   );
-  const [points, setPoints] = useState(currAssignment.points);
+  const [assignmentDescription, setAssignmentDescription] = useState(
+    currentAssignment.description
+  );
+  const [points, setPoints] = useState(currentAssignment.points);
   const [dueDate, setDueDate] = useState(
-    formatDate(new Date(currAssignment.due_date))
+    formatDate(new Date(currentAssignment.due_date))
   );
 
   const [availableFrom, setAvailableFrom] = useState(
-    formatDate(new Date(currAssignment.available_date))
+    formatDate(new Date(currentAssignment.available_date))
   );
   const [availableUntil, setAvailableUntil] = useState(
-    formatDate(new Date(currAssignment.available_until))
+    formatDate(new Date(currentAssignment.available_until))
   );
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const newData = {
       _id: aid,
       title: assignmentTitle,
@@ -52,9 +85,10 @@ export default function AssignmentEditor() {
       due_date: dueDate,
       available_date: availableFrom,
       available_until: availableUntil,
-      course: currAssignment.course,
+      course: currentAssignment.course,
     };
-    dispatch(updateAssignments(newData));
+    //dispatch(updateAssignments(newData));
+    await assignmentClient.updateAssignment(newData);
   };
 
   const CustomDateTimeInput: React.FC<{
