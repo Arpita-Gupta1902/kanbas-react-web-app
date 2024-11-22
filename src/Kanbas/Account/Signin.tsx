@@ -43,7 +43,7 @@ export default function Signin() {
       <h3>Assignment 5 Link:</h3>
       <a id="wd-assng-link" href="https://northeastern.instructure.com/courses/192548/assignments/2423283">Assignment 5</a>
       <h3>Link to the Kanbas application</h3>
-      <a id="wd-kanbas-link" href="https://celebrated-scone-b94a59.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
+      <a id="wd-kanbas-link" href="https://whimsical-fudge-0df494.netlify.app/#/Kanbas/Account/Signin">Kanbas Application</a>
       <h3>Link to the Server(using Render)</h3>
       <a id="wd-kanbas-link" href="https://kanbas-node-server-app-knuk.onrender.com">Server Link</a>
       <h3>Links to all relevant source code repositories</h3>
