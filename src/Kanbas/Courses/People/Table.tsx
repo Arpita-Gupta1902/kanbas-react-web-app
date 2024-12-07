@@ -1,12 +1,30 @@
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details";
-import { Link } from "react-router-dom";
-//import { useParams } from "react-router-dom";
-//import * as db from "../../Database";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import * as courseClient from "../../Courses/client"
 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
-  // const { cid } = useParams();
-  // const { Users, Enrollments} = db;
+
+  const { cid } = useParams();
+    const [userss, setUserss] = useState<any[]>([]);
+    
+    useEffect(() => {
+        const fetchEnrollmentsForCourse = async () => {
+            if (cid) {
+                try {
+                    const enrolledUsers = await courseClient.findUsersForCourse(cid)
+                    setUserss(enrolledUsers);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        };
+        fetchEnrollmentsForCourse();
+    }, [cid]);
+    
+    const displayUsers = cid ? userss : users
+
   return (
     <div id="wd-people-table">
       <PeopleDetails />
@@ -15,10 +33,7 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
           <tr><th>Name</th><th>Login ID</th><th>Section</th><th>Role</th><th>Last Activity</th><th>Total Activity</th></tr>
         </thead>
         <tbody>
-        {users
-          // .filter((user) =>
-          //   Enrollments.some((enrollment) => enrollment.user === user._id && enrollment.course === cid)
-          // )
+        {displayUsers
           .map((user: any) => (
           <tr key={user._id}><td className="wd-full-name text-nowrap">
             <Link to={`/Kanbas/Account/Users/${user._id}`} className="text-decoration-none">

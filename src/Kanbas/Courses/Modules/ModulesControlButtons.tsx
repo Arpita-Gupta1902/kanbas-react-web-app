@@ -8,18 +8,26 @@ import useIsFaculty from "../../Account/useIsFaculty";
 export default function ModuleControlButtons({
   moduleId,
   deleteModule,
-  editModule,
+  // editModule,
+  module,
+  setItems
 }: {
   moduleId: string;
   deleteModule: (moduleId: string) => void;
-  editModule: (moduleId: string) => void;
+  //editModule: (moduleId: any) => Promise<any>;
+  module: any;
+  setItems: React.Dispatch<React.SetStateAction<any[]>>;
 }) {
   const UserIsFaculty = useIsFaculty();
   return (
     <div className="float-end">
       {UserIsFaculty && (
         <FaPencil
-          onClick={() => editModule(moduleId)}
+          onClick={() => {
+            // editModule(moduleId)}
+            setItems((prev) => prev.map((item) => item._id === moduleId ? {...item, editing : true} : item))
+          }
+        }
           className="text-primary me-3"
         />
       )}

@@ -38,7 +38,6 @@ export default function AssignmentEditor() {
   );
   const fetchAssignmentById = async () => {
     const assignment = await assignmentClient.findAssignmentById(aid ?? "");
-    // console.log("arpita", assignment);
     setCurrentAssignments(assignment);
   };
   useEffect(() => {
@@ -54,9 +53,6 @@ export default function AssignmentEditor() {
   }, [currentAssignment]);
 
   const assignmentsRedux = useSelector((state: any) => state.assignmentReducer);
-  // let currAssignment = assignmentsRedux.assignments.find(
-  //   (item: any) => item._id === aid
-  // );
 
   const [assignmentTitle, setAssignmentTitle] = useState(
     currentAssignment.title
@@ -87,7 +83,6 @@ export default function AssignmentEditor() {
       available_until: availableUntil,
       course: currentAssignment.course,
     };
-    //dispatch(updateAssignments(newData));
     await assignmentClient.updateAssignment(newData);
   };
 
@@ -383,46 +378,3 @@ export default function AssignmentEditor() {
     </div>
   );
 }
-
-// const CustomDateTimeInput: React.FC<{
-//   selectedDate: string;
-//   setSelectedDate: any;
-// }> = ({ selectedDate, setSelectedDate }) => {
-//   const inputRef = useRef<HTMLInputElement | null>(null);
-
-//   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const selectedDate = new Date(e.target.value);
-//     setSelectedDate(formatDate(selectedDate));
-//   };
-//   const formatDate = (date: Date): string => {
-//     return date.toLocaleString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       hour: "numeric",
-//       minute: "numeric",
-//       hour12: true,
-//     });
-//   };
-
-//   const handleIconClick = () => {
-//     if (inputRef.current) {
-//       inputRef.current.showPicker();
-//     }
-//   };
-
-//   return (
-//     <div className="input-container">
-//       <div className="date-display">{selectedDate || ""}</div>
-//       <div className="calendar-icon" onClick={handleIconClick}>
-//         <FaCalendarAlt />
-//         <input
-//           ref={inputRef}
-//           type="datetime-local"
-//           className="date-time-picker"
-//           onChange={handleDateChange}
-//         />
-//       </div>
-//     </div>
-//   );
-// };

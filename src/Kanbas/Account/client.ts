@@ -32,26 +32,21 @@ export const signout = async () => {
 const response = await axiosWithCredentials.post(`${USERS_API}/signout`);
 return response.data;
 };
-  
-export const createCourse = async (course: any) => {
-    const { data } = await axiosWithCredentials.post(`${USERS_API}/current/courses`, course);
-    return data;
-  };
 
 export const findCoursesForEnrolledUser = async (user: any) => {
     const { data } = await axios.get(`${USERS_API}/${user._id}/courses`, user)
     return data;
 }
 
-export const enrollUserInCourse = async (courseId: any, userId: any) => {
-  const { data } = await axiosWithCredentials.post(`${USERS_API}/current/${courseId}`, {data: courseId, userId});
-  return data;
-}
-
-export const unEnrollUserInCourse = async (courseId: any, userId: any) => {
-  const { data } = await axiosWithCredentials.post(`${USERS_API}/current/${courseId}/unenroll`, {data: courseId, userId});
-  return data;
-}
+export const enrollIntoCourse = async (userId: string, courseId: string) => {
+  const response = await axiosWithCredentials.post(`${USERS_API}/${userId}/courses/${courseId}`);
+  return response.data;
+ };
+ export const unenrollFromCourse = async (userId: string, courseId: string) => {
+  const response = await axiosWithCredentials.delete(`${USERS_API}/${userId}/courses/${courseId}`);
+  return response.data;
+ };
+ 
 
 export const allUserEnrollments = async () => {
   const { data } = await axiosWithCredentials.get(`${REMOTE_SERVER}/api/enrollments`);
@@ -89,3 +84,12 @@ export const createUser = async (user: any) => {
   return response.data;
 };
 
+export const findCoursesForUser = async (userId: string) => {
+  const response = await axiosWithCredentials.get(`${USERS_API}/${userId}/courses`);
+  return response.data;
+};
+
+export const allEnrollments = async () => {
+  const response = await axiosWithCredentials.get(`${REMOTE_SERVER}/api/enrollments`);
+  return response.data;
+}

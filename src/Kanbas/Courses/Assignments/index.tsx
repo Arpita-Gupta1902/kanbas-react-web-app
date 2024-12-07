@@ -13,7 +13,6 @@ import { deleteAssignments } from "./reducer";
 import { FaTrashCan } from "react-icons/fa6";
 import { Button, Modal } from "react-bootstrap";
 import useIsFaculty from "../../Account/useIsFaculty";
-//import * as courseClient from "../../Courses/client";
 import * as assignmentClient from "../Assignments/client";
 
 export default function Assignments() {
@@ -26,7 +25,6 @@ export default function Assignments() {
   );
   const [assignments, setAssignments] = useState<any[]>(
     []
-    //assignmentsReduxData.assignments
   );
 
   const fetchAssignments = async () => {
@@ -42,7 +40,6 @@ export default function Assignments() {
     if (cid) {
       try {
         await assignmentClient.deleteAssignment(aid);
-        //dispatch(addAssignments(createdAssignment));
       } catch (error) {
         console.error("Failed to create assignment:", error);
       }
@@ -51,22 +48,18 @@ export default function Assignments() {
 
   useEffect(() => {
     fetchAssignments();
-  });
-
-  // useEffect(() => {
-  //   setAssignments(assignmentsReduxData.assignments);
-  // }, [assignmentsReduxData]);
+  }, [handleDeleteAssignment]);
 
   const [assignmentName, setAssignmentName] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [assignmentToDelete, setAssignmentToDelete] = useState("");
+  const [toggleAssignmentFlag, setToggleAssignmentFlag ] = useState(false);
 
   const handleDelete = (assignmentId: string) => {
     setAssignmentToDelete(assignmentId);
     setShowConfirmation(true);
   };
   const handleConfirmDelete = () => {
-    //dispatch(deleteAssignments(assignmentToDelete));
     handleDeleteAssignment(assignmentToDelete);
     setShowConfirmation(false);
   };

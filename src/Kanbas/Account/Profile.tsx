@@ -8,6 +8,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const updateProfile = async () => {
     const updatedProfile = await client.updateUser(profile);
     dispatch(setCurrentUser(updatedProfile));
@@ -21,6 +22,8 @@ export default function Profile() {
     dispatch(setCurrentUser(null));
     navigate("/Kanbas/Account/Signin");
   };
+
+
   useEffect(() => { fetchProfile(); }, []);
   return (
     <div id="wd-profile-screen" className="row d-flex" style={{paddingLeft:"10px"}}>

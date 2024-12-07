@@ -12,26 +12,8 @@ import ProtectedRoute from "./Account/ProtectedRoute";
 import { useSelector } from "react-redux";
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
-  const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
-    setCourses([ ...courses, newCourse ]);
-  };
-  const deleteCourse = async (courseId: string) => {
-    const status = await courseClient.deleteCourse(courseId);
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
+
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const fetchCourses = async () => {
-    try {
-      const courses = await userClient.findMyCourses();
-      setCourses(courses);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    fetchCourses();
-  }, [currentUser]);
 
   const [course, setCourse] = useState<any>({
     _id: "1234",
@@ -42,6 +24,48 @@ export default function Kanbas() {
     description: "New Description",
     manuallyAdded: true,
   });
+
+const [enrolling, setEnrolling] = useState<boolean>(false);
+ const findCoursesForUser = async () => {
+   try {
+     const courses = await userClient.findCoursesForUser(currentUser._id);
+     setCourses(courses);
+   } catch (error) {
+     console.error(error);
+   }
+ };
+
+ const updateEnrollment = async (courseId: string, enrolled: boolean) => {
+  if (enrolled) {
+    await userClient.enrollIntoCourse(currentUser._id, courseId);
+  } else {
+    await userClient.unenrollFromCourse(currentUser._id, courseId);
+  }
+  setCourses(
+    courses.map((course) => {
+      if (course._id === courseId) {
+        return { ...course, enrolled: enrolled };
+      } else {
+        return course;
+      }
+    })
+  );
+};
+
+const fetchCourses = async () => {
+  try {
+    const allCourses = await courseClient.fetchAllCourses();
+    setCourses(allCourses);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchCourses();
+}, [])
+
+
   return (
     <Session>
     <div id="wd-kanbas">
@@ -54,8 +78,7 @@ export default function Kanbas() {
             path="/Dashboard"
             element={
               <ProtectedRoute>
-                <Dashboard
-                />
+                <Dashboard />
               </ProtectedRoute>
             }
           />
