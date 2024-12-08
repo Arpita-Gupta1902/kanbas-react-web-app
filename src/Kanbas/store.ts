@@ -3,6 +3,7 @@ import modulesReducer from "./Courses/Modules/reducer";
 import accountReducer from "./Account/reducer";
 import assignmentReducer from "./Courses/Assignments/reducer";
 import coursesReducer from "./dashboardReducer";
+import quizzesReducer from "./Courses/Quizzes/reducer"
 
 export interface AssignmentState {
   assignmentReducer: {
@@ -26,6 +27,7 @@ const store = configureStore({
     modulesReducer,
     accountReducer,
     assignmentReducer,
+    quizzesReducer,
     courses: coursesReducer,
   },
 });
